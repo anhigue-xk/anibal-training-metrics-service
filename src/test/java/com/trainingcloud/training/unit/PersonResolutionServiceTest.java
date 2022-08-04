@@ -76,4 +76,11 @@ public class PersonResolutionServiceTest {
         List<PersonResolution> empList = personResolutionService.findByTimestampRange(new Date(2022, 8, 3), new Date(2022, 8, 5));
         assertEquals(2, empList.size());
     }
+
+    @Test
+    public void create_new_PersonResolution() throws Exception {
+        PersonResolution personResolution = new PersonResolution(1, new Date(), 0, 0, 0, 0, "test");
+        personResolutionService.create(personResolution);
+        verify(personResolutionRepository, times(1)).save(personResolution);
+    }
 }
