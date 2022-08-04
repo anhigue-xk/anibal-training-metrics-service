@@ -19,12 +19,12 @@ public class PersonResolutionServiceImpl implements PersonResolutionService {
     @Override
     public List<PersonResolution> getAll() throws Exception {
         List<PersonResolution> list = new ArrayList<>();
-        Iterable<PersonResolution> response = this.personResolutionRepository.findAll();
 
-        if (response != null){
+        try {
+            Iterable<PersonResolution> response = this.personResolutionRepository.findAll();
             response.forEach(list::add);
-        } else {
-            throw new Exception("No elements in the list");
+        } catch (Exception e) {
+            throw new Exception("Error get all elements");
         }
 
         return list;
@@ -32,18 +32,24 @@ public class PersonResolutionServiceImpl implements PersonResolutionService {
 
     @Override
     public Boolean create(PersonResolution personResolution) throws Exception {
-
-        PersonResolution response = this.personResolutionRepository.save(personResolution);
-
-        if (response != null) {
-            return true;
+        try {
+            this.personResolutionRepository.save(personResolution);
+        } catch (Exception e) {
+            throw new Exception("Error create person resolution");
         }
 
-        return false;
+        return true;
     }
 
     @Override
     public List<PersonResolution> findByTimestampRange(Date start, Date end) throws Exception {
-        return this.personResolutionRepository.findByTimestampBetween(start, end);
+        List<PersonResolution> personResolutionList = new ArrayList<>();
+        try {
+            Iterable<PersonResolution> response = this.personResolutionRepository.findByTimestampBetween(start, end);
+            response.forEach(personResolutionList::add);
+        } catch (Exception e) {
+            throw new Exception("Error to get elements");
+        }
+        return personResolutionList;
     }
 }
