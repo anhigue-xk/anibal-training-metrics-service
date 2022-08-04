@@ -1,7 +1,6 @@
 package com.trainingcloud.training.Controller.v1;
 
 import com.trainingcloud.training.Entity.BatchLoader;
-import com.trainingcloud.training.Entity.PersonResolution;
 import com.trainingcloud.training.Services.BatchLoaderService;
 import com.trainingcloud.training.Utils.Constants;
 import com.trainingcloud.training.Utils.ResponseApi;
@@ -20,10 +19,14 @@ import java.util.List;
 public class BatchLoaderController {
 
     @Autowired
-    private BatchLoaderService batchLoaderService;
+    private final BatchLoaderService batchLoaderService;
+
+    public BatchLoaderController(BatchLoaderService batchLoaderService) {
+        this.batchLoaderService = batchLoaderService;
+    }
 
     @GetMapping
-    public ResponseEntity getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
+    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
                                                         @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
         List<BatchLoader> batchLoaderList;
         if (start != null && end != null) {
@@ -32,18 +35,18 @@ public class BatchLoaderController {
             batchLoaderList = this.batchLoaderService.getAll();
         }
 
-        return new ResponseEntity(new ResponseApi<List<BatchLoader>>(true, batchLoaderList), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseApi<>(true, batchLoaderList), HttpStatus.OK);
 
     }
 
     @PostMapping
-    public ResponseEntity create(@RequestBody BatchLoader batchLoader) throws Exception {
+    public ResponseEntity<?> create(@RequestBody BatchLoader batchLoader) throws Exception {
         Boolean ok = this.batchLoaderService.create(batchLoader);
 
         if (ok) {
-            return new ResponseEntity(new ResponseApi<Boolean>(true, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseApi<>(true, true), HttpStatus.OK);
         }
 
-        return new ResponseEntity(new ResponseApi<Boolean>(false, null), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseApi<>(false, null), HttpStatus.BAD_REQUEST);
     }
 }
