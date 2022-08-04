@@ -1,4 +1,4 @@
-.PHONY: all create migration run
+.PHONY: all docker create migration run
 
 docker_image_name = training
 

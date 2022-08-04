@@ -1,20 +1,25 @@
-# Getting Started
+# Code Assessment - Spring Boot
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Dependencies
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.2/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.2/reference/htmlsingle/#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.2/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.7.2/reference/htmlsingle/#howto.data-initialization.migration-tool.flyway)
+1. Java 8
+1. Docker
+1. Maven
+1. Makefile
 
-### Guides
-The following guides illustrate how to use some features concretely:
+## Database
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+Create a new PostgreSQL database with the following commands. 
 
+```bash
+docker pull postgres
+docker run -d -it --name training -p 5432:5432 -e POSTGRES_PASSWORD=test -e POSTGRES_USER=test -e POSTGRES_DB=metrics postgres
+```
+
+## Run Project
+```bash
+make
+```
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
