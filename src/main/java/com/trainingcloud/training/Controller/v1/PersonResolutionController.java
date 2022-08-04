@@ -1,6 +1,5 @@
 package com.trainingcloud.training.Controller.v1;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.trainingcloud.training.Entity.PersonResolution;
 import com.trainingcloud.training.Services.PersonResolutionService;
 import com.trainingcloud.training.Utils.Constants;
@@ -20,10 +19,14 @@ import java.util.List;
 public class PersonResolutionController {
 
     @Autowired
-    private PersonResolutionService personResolutionService;
+    private final PersonResolutionService personResolutionService;
+
+    public PersonResolutionController(PersonResolutionService personResolutionService) {
+        this.personResolutionService = personResolutionService;
+    }
 
     @GetMapping
-    public ResponseEntity getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
+    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
                                                         @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
 
         List<PersonResolution> personResolutionList;
@@ -34,19 +37,19 @@ public class PersonResolutionController {
             personResolutionList = this.personResolutionService.getAll();
         }
 
-        return new ResponseEntity(new ResponseApi<List<PersonResolution>>(true, personResolutionList), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseApi<>(true, personResolutionList), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity createBatch(@RequestBody PersonResolution personResolution) throws Exception {
+    public ResponseEntity<?> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
 
         Boolean ok = this.personResolutionService.create(personResolution);
 
         if (ok) {
-            return new ResponseEntity(new ResponseApi<Boolean>(true, true), HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseApi<>(true, true), HttpStatus.OK);
         }
 
-        return new ResponseEntity(new ResponseApi<Boolean>(false, null), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseApi<>(false, null), HttpStatus.BAD_REQUEST);
 
     }
 
