@@ -2,7 +2,6 @@ package com.trainingcloud.training.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,23 +26,11 @@ public class PersonResolution {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
-
-    @Column
     private Date timestamp;
-    
-    @Column
     private int individualMatches;
-    
-    @Column
     private int householdMatches;
-    
-    @Column
     private int nonMatches;
-    
-    @Column
     private int errors;
-    
-    @Column
     private String url;
 
 }

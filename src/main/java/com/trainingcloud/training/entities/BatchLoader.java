@@ -2,12 +2,12 @@ package com.trainingcloud.training.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,24 +26,13 @@ public class BatchLoader {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @NotNull
     private long id;
-
-    @Column
     private Date timestamp;
-
-    @Column
     private String filename;
-
-    @Column
     private Date fileCreated;
-
-    @Column
     private Date filePickedUp;
-
-    @Column
     private Date fileProcessed;
-
-    @Column
     private int numberRecords;
 
 }
