@@ -18,7 +18,7 @@ docker_create:
 docker: 
 	docker start ${docker_image_name}
 create:
-	./mvnw clean package
+	mvn clean package
 migration:
 	mvn clean flyway:migrate -Dflyway.configFiles=myFlywayConfig.conf
 run:
