@@ -1,4 +1,4 @@
-package com.trainingcloud.training.utils;
+package com.trainingcloud.training.utilities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

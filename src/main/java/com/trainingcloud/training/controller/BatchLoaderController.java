@@ -2,8 +2,8 @@ package com.trainingcloud.training.controller;
 
 import com.trainingcloud.training.entities.BatchLoader;
 import com.trainingcloud.training.services.BatchLoaderService;
-import com.trainingcloud.training.utils.Constants;
-import com.trainingcloud.training.utils.ResponseApi;
+import com.trainingcloud.training.utilities.Constants;
+import com.trainingcloud.training.utilities.ResponseApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

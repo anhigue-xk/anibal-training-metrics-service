@@ -1,6 +1,6 @@
 package com.trainingcloud.training.unit;
 
-import com.trainingcloud.training.utils.Constants;
+import com.trainingcloud.training.utilities.Constants;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
