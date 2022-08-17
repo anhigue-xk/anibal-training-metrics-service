@@ -32,8 +32,8 @@ public class PersonResolutionController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
-                                                        @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
+    public ResponseEntity<ResponseApi<List<PersonResolution>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
+                                                                                @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
 
         List<PersonResolution> personResolutionList;
 
@@ -47,7 +47,7 @@ public class PersonResolutionController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
+    public ResponseEntity<ResponseApi<Boolean>> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
 
         Boolean ok = this.personResolutionService.create(personResolution);
 
