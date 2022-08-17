@@ -1,7 +1,7 @@
-package com.trainingcloud.training.Services.impl;
+package com.trainingcloud.training.services.impl;
 
-import com.trainingcloud.training.Entity.PersonResolution;
-import com.trainingcloud.training.Services.PersonResolutionService;
+import com.trainingcloud.training.entities.PersonResolution;
+import com.trainingcloud.training.services.PersonResolutionService;
 import com.trainingcloud.training.repository.PersonResolutionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

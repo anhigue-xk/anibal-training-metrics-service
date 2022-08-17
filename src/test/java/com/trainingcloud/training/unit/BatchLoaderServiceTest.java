@@ -1,7 +1,7 @@
 package com.trainingcloud.training.unit;
 
-import com.trainingcloud.training.Entity.BatchLoader;
-import com.trainingcloud.training.Services.impl.BatchLoaderServiceImpl;
+import com.trainingcloud.training.entities.BatchLoader;
+import com.trainingcloud.training.services.impl.BatchLoaderServiceImpl;
 import com.trainingcloud.training.repository.BatchLoaderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

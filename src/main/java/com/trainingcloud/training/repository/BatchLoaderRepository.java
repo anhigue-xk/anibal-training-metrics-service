@@ -2,7 +2,7 @@ package com.trainingcloud.training.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.trainingcloud.training.Entity.BatchLoader;
+import com.trainingcloud.training.entities.BatchLoader;
 
 import java.util.Date;
 import java.util.List;

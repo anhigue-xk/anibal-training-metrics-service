@@ -1,9 +1,9 @@
-package com.trainingcloud.training.Controller;
+package com.trainingcloud.training.controller;
 
-import com.trainingcloud.training.Entity.PersonResolution;
-import com.trainingcloud.training.Services.PersonResolutionService;
-import com.trainingcloud.training.Utils.Constants;
-import com.trainingcloud.training.Utils.ResponseApi;
+import com.trainingcloud.training.entities.PersonResolution;
+import com.trainingcloud.training.services.PersonResolutionService;
+import com.trainingcloud.training.utils.Constants;
+import com.trainingcloud.training.utils.ResponseApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;

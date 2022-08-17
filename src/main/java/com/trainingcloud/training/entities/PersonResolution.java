@@ -1,4 +1,4 @@
-package com.trainingcloud.training.Entity;
+package com.trainingcloud.training.entities;
 
 import java.util.Date;
 
@@ -17,12 +17,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = BatchLoader.BATCH_LOADER_TABLE_NAME)
+@Table(name = PersonResolution.PERSON_RESOLUTION_TABLE_NAME)
 @NoArgsConstructor
 @AllArgsConstructor
-public class BatchLoader {
+public class PersonResolution {
     
-    public static final String BATCH_LOADER_TABLE_NAME = "batch_loader";
+    public static final String PERSON_RESOLUTION_TABLE_NAME = "person_resolution";
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -30,20 +30,20 @@ public class BatchLoader {
 
     @Column
     private Date timestamp;
-
+    
     @Column
-    private String filename;
-
+    private int individualMatches;
+    
     @Column
-    private Date fileCreated;
-
+    private int householdMatches;
+    
     @Column
-    private Date filePickedUp;
-
+    private int nonMatches;
+    
     @Column
-    private Date fileProcessed;
-
+    private int errors;
+    
     @Column
-    private int numberRecords;
+    private String url;
 
 }

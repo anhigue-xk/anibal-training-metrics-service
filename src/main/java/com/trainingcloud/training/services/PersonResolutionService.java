@@ -1,7 +1,7 @@
-package com.trainingcloud.training.Services;
+package com.trainingcloud.training.services;
 
 
-import com.trainingcloud.training.Entity.PersonResolution;
+import com.trainingcloud.training.entities.PersonResolution;
 
 import java.util.Date;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.trainingcloud.training.Utils;
+package com.trainingcloud.training.utils;
 
 public class Constants {
     public static final String DATE_FORMAT = "yyyy-MM-dd";

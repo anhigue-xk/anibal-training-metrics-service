@@ -1,7 +1,7 @@
-package com.trainingcloud.training.Services.impl;
+package com.trainingcloud.training.services.impl;
 
-import com.trainingcloud.training.Entity.BatchLoader;
-import com.trainingcloud.training.Services.BatchLoaderService;
+import com.trainingcloud.training.entities.BatchLoader;
+import com.trainingcloud.training.services.BatchLoaderService;
 import com.trainingcloud.training.repository.BatchLoaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
