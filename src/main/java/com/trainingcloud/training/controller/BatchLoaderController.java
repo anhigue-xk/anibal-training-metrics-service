@@ -32,7 +32,7 @@ public class BatchLoaderController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
+    public ResponseEntity<ResponseApi<List<BatchLoader>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
                                                         @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
         List<BatchLoader> batchLoaderList;
         if (start != null && end != null) {
@@ -41,12 +41,12 @@ public class BatchLoaderController {
             batchLoaderList = this.batchLoaderService.getAll();
         }
 
-        return new ResponseEntity<>(new ResponseApi<>(true, batchLoaderList), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseApi<List<BatchLoader>>(true, batchLoaderList), HttpStatus.OK);
 
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody BatchLoader batchLoader) throws Exception {
+    public ResponseEntity<ResponseApi<Boolean>> create(@RequestBody BatchLoader batchLoader) throws Exception {
         Boolean ok = this.batchLoaderService.create(batchLoader);
 
         if (ok) {
