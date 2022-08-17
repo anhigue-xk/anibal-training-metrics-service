@@ -1,4 +1,4 @@
-package com.trainingcloud.training.Controller.v1;
+package com.trainingcloud.training.Controller;
 
 import com.trainingcloud.training.Entity.BatchLoader;
 import com.trainingcloud.training.Services.BatchLoaderService;
