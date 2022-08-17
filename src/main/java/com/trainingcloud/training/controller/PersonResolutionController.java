@@ -1,15 +1,21 @@
-package com.trainingcloud.training.Controller.v1;
+package com.trainingcloud.training.controller;
 
-import com.trainingcloud.training.Entity.PersonResolution;
-import com.trainingcloud.training.Services.PersonResolutionService;
-import com.trainingcloud.training.Utils.Constants;
-import com.trainingcloud.training.Utils.ResponseApi;
+import com.trainingcloud.training.entities.PersonResolution;
+import com.trainingcloud.training.services.PersonResolutionService;
+import com.trainingcloud.training.utilities.Constants;
+import com.trainingcloud.training.utilities.ResponseApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -26,8 +32,8 @@ public class PersonResolutionController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
-                                                        @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
+    public ResponseEntity<ResponseApi<List<PersonResolution>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT) Date start,
+                                                                                @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
 
         List<PersonResolution> personResolutionList;
 
@@ -41,7 +47,7 @@ public class PersonResolutionController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
+    public ResponseEntity<ResponseApi<Boolean>> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
 
         Boolean ok = this.personResolutionService.create(personResolution);
 

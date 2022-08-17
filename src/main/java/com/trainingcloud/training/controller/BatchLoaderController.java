@@ -1,15 +1,21 @@
-package com.trainingcloud.training.Controller.v1;
+package com.trainingcloud.training.controller;
 
-import com.trainingcloud.training.Entity.BatchLoader;
-import com.trainingcloud.training.Services.BatchLoaderService;
-import com.trainingcloud.training.Utils.Constants;
-import com.trainingcloud.training.Utils.ResponseApi;
+import com.trainingcloud.training.entities.BatchLoader;
+import com.trainingcloud.training.services.BatchLoaderService;
+import com.trainingcloud.training.utilities.Constants;
+import com.trainingcloud.training.utilities.ResponseApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -26,7 +32,7 @@ public class BatchLoaderController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
+    public ResponseEntity<ResponseApi<List<BatchLoader>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
                                                         @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
         List<BatchLoader> batchLoaderList;
         if (start != null && end != null) {
@@ -35,12 +41,12 @@ public class BatchLoaderController {
             batchLoaderList = this.batchLoaderService.getAll();
         }
 
-        return new ResponseEntity<>(new ResponseApi<>(true, batchLoaderList), HttpStatus.OK);
+        return new ResponseEntity<>(new ResponseApi<List<BatchLoader>>(true, batchLoaderList), HttpStatus.OK);
 
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody BatchLoader batchLoader) throws Exception {
+    public ResponseEntity<ResponseApi<Boolean>> create(@RequestBody BatchLoader batchLoader) throws Exception {
         Boolean ok = this.batchLoaderService.create(batchLoader);
 
         if (ok) {

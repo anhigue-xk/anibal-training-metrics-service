@@ -5,9 +5,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.trainingcloud.training.Entity.PersonResolution;
-import com.trainingcloud.training.Services.PersonResolutionService;
-import com.trainingcloud.training.Services.impl.PersonResolutionServiceImpl;
+import com.trainingcloud.training.entities.PersonResolution;
+import com.trainingcloud.training.services.impl.PersonResolutionServiceImpl;
 import com.trainingcloud.training.repository.PersonResolutionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

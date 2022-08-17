@@ -1,6 +1,6 @@
-package com.trainingcloud.training.Services;
+package com.trainingcloud.training.services;
 
-import com.trainingcloud.training.Entity.BatchLoader;
+import com.trainingcloud.training.entities.BatchLoader;
 
 import java.util.Date;
 import java.util.List;
