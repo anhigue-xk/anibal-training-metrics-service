@@ -23,3 +23,5 @@ migration:
 	mvn clean flyway:migrate -Dflyway.configFiles=src/main/resources/db/config/myFlywayConfig.conf
 run:
 	java -jar target/training-0.0.1-SNAPSHOT.jar
+start:
+	mvn spring-boot:run
