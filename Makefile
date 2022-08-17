@@ -5,7 +5,7 @@ postgre_user = test
 postgre_pass = test
 postegre_db  = metrics
 
-all: docker migration create run
+all: docker_create docker migration create run
 
 docker_create:
 	docker pull postgres && \
