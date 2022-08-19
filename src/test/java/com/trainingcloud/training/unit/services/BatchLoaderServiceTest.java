@@ -1,4 +1,4 @@
-package com.trainingcloud.training.unit;
+package com.trainingcloud.training.unit.services;
 
 import com.trainingcloud.training.entities.BatchLoader;
 import com.trainingcloud.training.services.impl.BatchLoaderServiceImpl;

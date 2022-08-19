@@ -47,7 +47,7 @@ public class PersonResolutionController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseApi<Boolean>> createBatch(@RequestBody PersonResolution personResolution) throws Exception {
+    public ResponseEntity<ResponseApi<Boolean>> create(@RequestBody PersonResolution personResolution) throws Exception {
 
         Boolean ok = this.personResolutionService.create(personResolution);
 

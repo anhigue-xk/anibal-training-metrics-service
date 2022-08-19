@@ -4,6 +4,7 @@ import com.trainingcloud.training.entities.BatchLoader;
 import com.trainingcloud.training.services.BatchLoaderService;
 import com.trainingcloud.training.utilities.Constants;
 import com.trainingcloud.training.utilities.ResponseApi;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,8 @@ public class BatchLoaderController {
     }
 
     @GetMapping
-    public ResponseEntity<ResponseApi<List<BatchLoader>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern= Constants.DATE_FORMAT) Date start,
-                                                        @RequestParam(required = false) @DateTimeFormat(pattern=Constants.DATE_FORMAT)Date end) throws Exception {
+    public ResponseEntity<ResponseApi<List<BatchLoader>>> getByTimestampBetween(@RequestParam(required = false) @DateTimeFormat(pattern = Constants.DATE_FORMAT) Date start,
+                                                                                @RequestParam(required = false) @DateTimeFormat(pattern = Constants.DATE_FORMAT) Date end) throws Exception {
         List<BatchLoader> batchLoaderList;
         if (start != null && end != null) {
             batchLoaderList = this.batchLoaderService.findByTimestampRange(start, end);
