@@ -1,4 +1,4 @@
-.PHONY: all migration run docker_run database docker_network
+.PHONY: all migration run docker_run database_create database_run docker_network
 
 docker_image_name = training-api
 docker_network_name = training-network
@@ -10,7 +10,7 @@ postegre_db  = metrics
 
 all: database migration run
 
-database:
+database_create:
 	docker pull postgres && \
 	docker run -d -it --name ${container_db_name} \
 	--network=${docker_network_name} \
@@ -19,6 +19,8 @@ database:
 	-e POSTGRES_USER=${postgre_pass} \
 	-e POSTGRES_DB=${postegre_db} \
 	postgres
+database_run:
+	docker start ${container_db_name}
 docker_network:
 	docker network create --driver=bridge ${docker_network_name}
 docker_run:
